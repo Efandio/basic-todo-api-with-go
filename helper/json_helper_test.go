@@ -30,3 +30,21 @@ func TestDecoderJson(t *testing.T) {
 	})
 	
 }
+
+func TestEncoderJson(t *testing.T) {
+	
+	t.Run("Success with struct data", func(t *testing.T) {
+
+		type MockData struct {
+			ID	string	`json:"id"`
+			Title	string	`json:"title"`
+		}
+
+		mockResData := MockData{ID: "kaoa22223qqqwas", Title: "Test Encode"}
+		recorder := httptest.NewRecorder()
+
+		err := EncoderJson(recorder, http.StatusOK, mockResData)
+		assert.NoError(t, err, "expected to success")
+	})
+
+}

@@ -26,3 +26,20 @@ func DecoderJson(r *http.Request, target interface{}) error {
 
 	return nil
 }
+
+
+// Encoder JSON
+func EncoderJson(w http.ResponseWriter, statusCode int, data interface{}) error {
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(statusCode)
+
+	if data != nil {
+		if err := json.NewEncoder(w).Encode(data); err != nil {
+			log.Printf("Failed to encode %v", err)
+			return fmt.Errorf("failed encode to json %w", err)
+		}
+	}
+
+	return nil
+}
