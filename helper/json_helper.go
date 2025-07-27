@@ -8,7 +8,7 @@ import (
 )
 
 // Decoder JSON
-func EncodingJson(r *http.Request, target interface{}) error {
+func DecoderJson(r *http.Request, target interface{}) error {
 
 	if r.Header.Get("Content-Type") != "application/json" {
 		log.Println("Error: invalid content-type", r.Header.Get("Content-Type"))

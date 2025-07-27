@@ -11,7 +11,7 @@ import (
 )
 
 
-func TestEncodingJson(t *testing.T) {
+func TestDecoderJson(t *testing.T) {
 
 	// Sub test using string literal
 	t.Run("Valid JSON input from string literal", func(t *testing.T) {
@@ -22,7 +22,7 @@ func TestEncodingJson(t *testing.T) {
 		req.Header.Set("Content-Type", "application/json")
 
 		var todo model.Todo
-		err := EncodingJson(req, &todo)
+		err := DecoderJson(req, &todo)
 
 		assert.NotNil(t, todo, "todo should not nil")
 		assert.Nil(t, err, "result err should not nil")
