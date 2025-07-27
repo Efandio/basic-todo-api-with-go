@@ -15,10 +15,9 @@ func TestDBConnection(t *testing.T) {
 		
 		assert.NoError(t, err, "expected no error")
 		assert.NotNil(t, conn, "expected Conn_DB not nil")
-		assert.NotNil(t, conn.DB, "expected *sql.BD not nil")
 		
-
 		if conn != nil {
+			assert.NotNil(t, conn.DB, "expected *sql.BD not nil")
 			err := conn.DB.Close()
 			assert.NoError(t, err, "expected no error when closing db conn")
 		}
