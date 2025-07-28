@@ -43,3 +43,8 @@ func EncoderJson(w http.ResponseWriter, statusCode int, data interface{}) error 
 
 	return nil
 }
+
+func SendJSONResponse(w http.ResponseWriter, statucCode int) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(statucCode)
+}
